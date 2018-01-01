@@ -13,8 +13,8 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
-    return is_palindrome_iterative(text)
-    # return is_palindrome_recursive(text)
+    # return is_palindrome_iterative(text)
+    return is_palindrome_recursive(text)
 
 
 def remove_non_letters(text):
@@ -49,7 +49,10 @@ def is_palindrome_iterative(text):
     return True
 
 
-def is_palindrome_recursive(text, left=0, right=-1):
+def is_palindrome_recursive(text, left=0, right=None):
+
+    if not right:  # Initialize right value
+        right = len(text) - 1
 
     if left < right:
 
