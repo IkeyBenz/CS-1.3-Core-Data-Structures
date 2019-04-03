@@ -17,7 +17,7 @@ def decode(digits: str, base: int) -> int:
 
 	output = 0
 
-	for index, digit in enumerate(digits[::-1]):
+	for index, digit in enumerate(reversed(digits)):
 		output += string_to_int[digit] * (base**index)
 
 	return output
@@ -30,14 +30,13 @@ def encode(number: int, base: int) -> str:
 	assert number >= 0, 'number is negative: {}'.format(number)
 
 	output = ''
-	currNum = number
 	largest_power = floor(log(number, base))
 
 	for i in range(largest_power, -1, -1):
 
-		if currNum >= base**i:
-			new_digit = currNum // (base**i)
-			currNum -= new_digit * (base**i)
+		if number >= base**i:
+			new_digit = number // (base**i)
+			number -= new_digit * (base**i)
 			output += int_to_string[new_digit]
 
 		else:
@@ -55,15 +54,8 @@ def convert(digits, base1, base2):
 	# Handle up to base 36 [0-9a-z]
 	assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
 	assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
-	# TODO: Convert digits from base 2 to base 16 (and vice versa)
-	# ...
-	# TODO: Convert digits from base 2 to base 10 (and vice versa)
-	# ...
-	# TODO: Convert digits from base 10 to base 16 (and vice versa)
-	# ...
-	# TODO: Convert digits from any base to any base (2 up to 36)
-	# ...
-	return digits
+	
+	return encode(decode(digits, base1), base2)
 
 
 def main():
@@ -83,6 +75,4 @@ def main():
 
 
 if __name__ == '__main__':
-	import sys
-	args = sys.argv[1:]
-	print(encode(int(args[0]), int(args[1])))
+	main()
