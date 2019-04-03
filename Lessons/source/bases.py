@@ -3,10 +3,10 @@
 import string
 from math import floor, log
 
-# A list of [0, 1, 2, ... x, y, z]
+# A string of '01234...vwxyz'
 int_to_string = string.digits + string.ascii_lowercase
 
-# A dictionary of { '0': 0, '1': 1, '2': 2, ..., 'x': 33, 'y': 34, 'z': 35 }
+# A dictionary of { '0': 0, '1': 1, ....., 'y': 34, 'z': 35 }
 string_to_int = { s: i for i, s in enumerate(int_to_string) }
 
 
@@ -32,6 +32,7 @@ def encode(number: int, base: int) -> str:
 	output = ''
 	largest_power = floor(log(number, base))
 
+	# Count down from largest_power to 0
 	for i in range(largest_power, -1, -1):
 
 		if number >= base**i:
@@ -45,12 +46,8 @@ def encode(number: int, base: int) -> str:
 	return output
 
 
-def convert(digits, base1, base2):
-	"""Convert given digits in base1 to digits in base2.
-	digits: str -- string representation of number (in base1)
-	base1: int -- base of given number
-	base2: int -- base to convert to
-	return: str -- string representation of number (in base2)"""
+def convert(digits: str, base1: int, base2: int) -> str:
+	""" Convert given digits in base1 to digits in base2. """
 	# Handle up to base 36 [0-9a-z]
 	assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
 	assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
