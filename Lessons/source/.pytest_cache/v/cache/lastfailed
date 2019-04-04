@@ -46,7 +46,6 @@
   "queue_test.py::QueueTest::test_init": true,
   "queue_test.py::QueueTest::test_init_with_list": true,
   "queue_test.py::QueueTest::test_length": true,
-  "search_test.py::SearchTest::test_binary_search_with_items_in_list": true,
   "sorting_test.py::IntegerSortTest::test_sort_on_lists_of_random_integers": true,
   "sorting_test.py::IntegerSortTest::test_sort_on_lists_of_random_integers_with_duplicates": true,
   "sorting_test.py::IntegerSortTest::test_sort_on_small_lists_of_integers": true,
