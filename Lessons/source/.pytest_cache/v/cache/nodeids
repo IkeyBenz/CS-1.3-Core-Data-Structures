@@ -1,3 +1,6 @@
 [
-  "bases_test.py::BasesDecodeTest::test_decode_binary"
+  "recursion_test.py::RecursionTest::test_factorial_with_floating_point_numbers",
+  "recursion_test.py::RecursionTest::test_factorial_with_large_integers",
+  "recursion_test.py::RecursionTest::test_factorial_with_negative_integers",
+  "recursion_test.py::RecursionTest::test_factorial_with_small_integers"
 ]
