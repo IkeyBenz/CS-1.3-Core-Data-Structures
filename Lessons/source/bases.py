@@ -10,13 +10,14 @@ int_to_string = string.digits + string.ascii_lowercase
 string_to_int = { s: i for i, s in enumerate(int_to_string) }
 
 
-def decode(digits: str, base: int) -> int:
-	""" Decode given digits in given base to number in base 10. """
-
-	assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-
-	output = 0
-
+def decode(digits: str, base: int) -> int:													# EXAMPLE:
+	""" Decode given digits in given base to number in base 10. """		#			digits = '1100', base = 2
+																																		#				
+	assert 2 <= base <= 36, 'base is out of range: {}'.format(base)		#	   index | digit | string_to_int[digit] | base**index | output
+																																		# 1)   0   |  '0'  |          0           |   2^0 = 1   |   0        
+	digits = digits.lower() # Ensure there are no capital letters     # 2)   1   |  '0'  |          0           |   2^1 = 2   |   0
+	output = 0 						 	# Initialize output integer as zero       # 3)   2   |  '1'  |          1           |   2^2 = 4   |   4
+																																		# 4)   3   |  '1'  |          1           |   2^3 = 8   |   12
 	for index, digit in enumerate(reversed(digits)):
 		output += string_to_int[digit] * (base**index)
 
@@ -28,6 +29,9 @@ def encode(number: int, base: int) -> str:
 
 	assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
 	assert number >= 0, 'number is negative: {}'.format(number)
+
+	if number == 0:
+		return '0'
 
 	output = ''
 	largest_power = floor(log(number, base))
