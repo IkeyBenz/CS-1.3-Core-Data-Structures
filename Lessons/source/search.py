@@ -19,11 +19,14 @@ def linear_search_iterative(array, item):
 
 def linear_search_recursive(array, item, index=0):
 
+    # Check for index-range error
     if index >= len(array):
         return None
+    # If we find the item, stop recursing and return the index
     if array[index] == item:
         return index
 
+    # Item not yet found, try the next index
     return linear_search_recursive(array, item, index+1)
 
 
