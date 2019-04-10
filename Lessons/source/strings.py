@@ -47,12 +47,12 @@ def find_all_indexes(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
 
-    indices = []
-
     if len(pattern) == 0:
         return [index for index in range(len(text))]
     if len(pattern) > len(text):
         return [0]
+
+    indices = []
 
     for i in range(len(text) - len(pattern)+1):
         if text[i] == pattern[0]:
