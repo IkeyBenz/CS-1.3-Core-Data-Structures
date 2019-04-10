@@ -17,18 +17,58 @@ def is_palindrome(text):
     # return is_palindrome_recursive(text)
 
 
+def remove_non_letters(text):
+    stripped = ""
+    for c in text:
+        if 65 <= ord(c) <= 90 or 97 <= ord(c) <= 122:
+            stripped += c
+    return stripped
+
+
 def is_palindrome_iterative(text):
-    # TODO: implement the is_palindrome function iteratively here
-    pass
-    # once implemented, change is_palindrome to call is_palindrome_iterative
-    # to verify that your iterative implementation passes all tests
+
+    left, right = 0, len(text)-1
+
+    while left < right:
+
+        # Account for non-letters:
+        if not text[left].isalpha():
+            left += 1
+            continue  # End this itteration here
+        if not text[right].isalpha():
+            right -= 1
+            continue
+
+        # If mirrored text doesn't match, not palindrome
+        if text[left].lower() != text[right].lower():
+            return False
+
+        left += 1
+        right -= 1
+
+    return True
 
 
-def is_palindrome_recursive(text, left=None, right=None):
-    # TODO: implement the is_palindrome function recursively here
-    pass
-    # once implemented, change is_palindrome to call is_palindrome_recursive
-    # to verify that your iterative implementation passes all tests
+def is_palindrome_recursive(text, left=0, right=None):
+
+    if not right:
+        right = len(text)-1
+
+    if left < right:
+
+        # Account for non-letters
+        if not text[left].isalpha():
+            return is_palindrome_recursive(text, left+1, right)
+        if not text[right].isalpha():
+            return is_palindrome_recursive(text, left, right-1)
+
+        # If mirrored letters don't match, not palindrome
+        if text[left].lower() != text[right].lower():
+            return False
+
+        return is_palindrome_recursive(text, left+1, right-1)
+
+    return True
 
 
 def main():
@@ -46,4 +86,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    print(is_palindrome_iterative('rac- ,ecar'))

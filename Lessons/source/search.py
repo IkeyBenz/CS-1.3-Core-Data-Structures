@@ -22,12 +22,14 @@ def linear_search_recursive(array, item, index=0):
     # Check for index-range error
     if index >= len(array):
         return None
+
     # If we find the item, stop recursing and return the index
     if array[index] == item:
         return index
 
     # Item not yet found, try the next index
-    return linear_search_recursive(array, item, index+1)
+    else:
+        return linear_search_recursive(array, item, index+1)
 
 
 def binary_search(array, item):
@@ -39,10 +41,12 @@ def binary_search(array, item):
 
 
 def binary_search_iterative(array, item):
+        # Set initial search bounds
     start, stop = 0, len(array) - 1
 
     midpoint = (start + stop) // 2
 
+    # While item not found and range is still valid
     while array[midpoint] is not item and start < stop:
         if array[midpoint] < item:
             start = midpoint + 1
@@ -56,9 +60,7 @@ def binary_search_iterative(array, item):
     return None
 
 
-def binary_search_recursive(array, item, left=None, right=None):
-    if not left:
-        left = 0
+def binary_search_recursive(array, item, left=0, right=None):
     if not right:
         right = len(array) - 1
 
@@ -66,9 +68,11 @@ def binary_search_recursive(array, item, left=None, right=None):
 
     if array[midpoint] == item:
         return midpoint
-    elif left == right:
+
+    if left >= right:
         return None
-    elif array[midpoint] > item:
+
+    if array[midpoint] > item:
         return binary_search_recursive(array, item, left, midpoint)
     # +1 because we floor the midpoint
     return binary_search_recursive(array, item, midpoint+1, right)
