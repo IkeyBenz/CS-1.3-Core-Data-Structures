@@ -57,13 +57,5 @@
   "stack_test.py::StackTest::test_length": true,
   "stack_test.py::StackTest::test_peek": true,
   "stack_test.py::StackTest::test_pop": true,
-  "stack_test.py::StackTest::test_push": true,
-  "strings_test.py::StringsTest::test_contains_with_complex_patterns": true,
-  "strings_test.py::StringsTest::test_contains_with_matching_patterns": true,
-  "strings_test.py::StringsTest::test_contains_with_non_matching_patterns": true,
-  "strings_test.py::StringsTest::test_find_all_indexes_with_complex_patterns": true,
-  "strings_test.py::StringsTest::test_find_all_indexes_with_matching_patterns": true,
-  "strings_test.py::StringsTest::test_find_all_indexes_with_non_matching_patterns": true,
-  "strings_test.py::StringsTest::test_find_index_with_complex_patterns": true,
-  "strings_test.py::StringsTest::test_find_index_with_matching_patterns": true
+  "stack_test.py::StackTest::test_push": true
 }
