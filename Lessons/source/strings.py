@@ -20,8 +20,6 @@ def contains(text, pattern):
     return False  # return pattern in text :/
 
 
-# "abcdef" "efg"
-
 def find_index(text, pattern):
     """Returns the starting index of the first occurrence of pattern in text,
     or None if not found."""

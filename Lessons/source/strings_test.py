@@ -131,9 +131,7 @@ class StringsTest(unittest.TestCase):
             0, 8]  # multiple occurrences
         assert find_all_indexes('abra cadabra', 'adab') == [
             6]  # overlapping prefix
-        # TODO: Write more test cases that check complex patterns or edge cases
-        # You'll need a lot more than this to test your algorithm's robustness
-        # ...
+        assert find_all_indexes('abcdefg', 'fgh') == []
 
 
 if __name__ == '__main__':
