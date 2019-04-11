@@ -34,10 +34,10 @@ def is_palindrome_iterative(text):
         # Account for non-letters:
         if not text[left].isalpha():
             left += 1
-            continue  # End this itteration here
         if not text[right].isalpha():
             right -= 1
-            continue
+        if not (text[left].isalpha() and text[right].isalpha()):
+            continue  # Go back and remove more non-letters
 
         # If mirrored text doesn't match, not palindrome
         if text[left].lower() != text[right].lower():
@@ -49,10 +49,7 @@ def is_palindrome_iterative(text):
     return True
 
 
-def is_palindrome_recursive(text, left=0, right=None):
-
-    if not right:
-        right = len(text)-1
+def is_palindrome_recursive(text, left=0, right=-1):
 
     if left < right:
 
