@@ -108,8 +108,8 @@ class StringsTest(unittest.TestCase):
         assert find_all_indexes('abc', 'az') == []
         # first 2 letters, but not last
         assert find_all_indexes('abc', 'abz') == []
-        # TODO: Write more negative test cases with assert equal list statements
-        # ...
+        # pattern is larget than text
+        assert find_all_indexes('abc', 'abcd') == []
 
     def test_find_all_indexes_with_complex_patterns(self):
         # Difficult test cases (examples) with complex patterns

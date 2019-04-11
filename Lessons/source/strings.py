@@ -37,7 +37,7 @@ def find_all_indexes(text, pattern):
     if len(pattern) == 0:
         return [index for index in range(len(text))]
     if len(pattern) > len(text):
-        return [0]
+        return []
 
     indices = []
     index = find_index(text, pattern)
