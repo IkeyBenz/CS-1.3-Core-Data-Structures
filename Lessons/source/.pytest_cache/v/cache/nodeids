@@ -1,15 +1,8 @@
 [
-  "linkedlist_test.py::NodeTest::test_init",
-  "linkedlist_test.py::LinkedListTest::test_append",
-  "linkedlist_test.py::LinkedListTest::test_delete",
-  "linkedlist_test.py::LinkedListTest::test_find",
-  "linkedlist_test.py::LinkedListTest::test_get_at_index",
-  "linkedlist_test.py::LinkedListTest::test_init",
-  "linkedlist_test.py::LinkedListTest::test_init_with_list",
-  "linkedlist_test.py::LinkedListTest::test_insert_at_index",
-  "linkedlist_test.py::LinkedListTest::test_items",
-  "linkedlist_test.py::LinkedListTest::test_length",
-  "linkedlist_test.py::LinkedListTest::test_prepend",
-  "linkedlist_test.py::LinkedListTest::test_replace",
-  "linkedlist_test.py::LinkedListTest::test_size"
+  "stack_test.py::StackTest::test_init",
+  "stack_test.py::StackTest::test_init_with_list",
+  "stack_test.py::StackTest::test_length",
+  "stack_test.py::StackTest::test_peek",
+  "stack_test.py::StackTest::test_pop",
+  "stack_test.py::StackTest::test_push"
 ]

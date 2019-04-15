@@ -43,11 +43,5 @@
   "sorting_test.py::IsSortedTest::test_is_sorted_on_unsorted_tuples": true,
   "sorting_test.py::StringSortTest::test_sort_on_fish_book_title": true,
   "sorting_test.py::StringSortTest::test_sort_on_seven_dwarf_names": true,
-  "sorting_test.py::StringSortTest::test_sort_on_small_lists_of_strings": true,
-  "stack_test.py::StackTest::test_init": true,
-  "stack_test.py::StackTest::test_init_with_list": true,
-  "stack_test.py::StackTest::test_length": true,
-  "stack_test.py::StackTest::test_peek": true,
-  "stack_test.py::StackTest::test_pop": true,
-  "stack_test.py::StackTest::test_push": true
+  "sorting_test.py::StringSortTest::test_sort_on_small_lists_of_strings": true
 }
