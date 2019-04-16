@@ -104,7 +104,7 @@ class LinkedList(object):
 
         # Get node before given index
         pre = self.head
-        for _ in range(index-1):
+        for _ in range(index-1):  # Itterate index-1 times, ignore the counter variable
             pre = pre.next
 
         # Create new node and set next to the previous node's next

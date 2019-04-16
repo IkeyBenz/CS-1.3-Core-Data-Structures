@@ -1,8 +1,8 @@
 [
-  "stack_test.py::StackTest::test_init",
-  "stack_test.py::StackTest::test_init_with_list",
-  "stack_test.py::StackTest::test_length",
-  "stack_test.py::StackTest::test_peek",
-  "stack_test.py::StackTest::test_pop",
-  "stack_test.py::StackTest::test_push"
+  "queue_test.py::QueueTest::test_dequeue",
+  "queue_test.py::QueueTest::test_enqueue",
+  "queue_test.py::QueueTest::test_front",
+  "queue_test.py::QueueTest::test_init",
+  "queue_test.py::QueueTest::test_init_with_list",
+  "queue_test.py::QueueTest::test_length"
 ]
