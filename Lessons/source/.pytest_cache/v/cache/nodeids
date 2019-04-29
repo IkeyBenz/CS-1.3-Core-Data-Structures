@@ -1,8 +1,6 @@
 [
-  "queue_test.py::QueueTest::test_dequeue",
-  "queue_test.py::QueueTest::test_enqueue",
-  "queue_test.py::QueueTest::test_front",
-  "queue_test.py::QueueTest::test_init",
-  "queue_test.py::QueueTest::test_init_with_list",
-  "queue_test.py::QueueTest::test_length"
+  "sets_test.py::SetsTest::test_add",
+  "sets_test.py::SetsTest::test_delete",
+  "sets_test.py::SetsTest::test_init",
+  "sets_test.py::SetsTest::test_init_with_list"
 ]

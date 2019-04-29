@@ -20,6 +20,12 @@ class HashTable(object):
         """Return a string representation of this hash table."""
         return 'HashTable({!r})'.format(self.items())
 
+    def __contains__(self, key):
+        return self.contains(key)
+
+    def __len__(self):
+        return self.size
+
     def _bucket_index(self, key):
         """Return the bucket index where the given key would be stored."""
         return hash(key) % len(self.buckets)
