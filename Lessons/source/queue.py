@@ -42,7 +42,7 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(1) – Why? [TODO]"""
+        Running time: O(1) – Removing element from head of linked list is constant time."""
         if self.length() == 0:
             raise ValueError("Queue is empty.")
 
@@ -98,5 +98,5 @@ class ArrayQueue(object):
 
 # Implement LinkedQueue and ArrayQueue above, then change the assignment below
 # to use each of your Queue implementations to verify they each pass all tests
-# Queue = LinkedQueue
-Queue = ArrayQueue
+Queue = LinkedQueue
+# Queue = ArrayQueue
