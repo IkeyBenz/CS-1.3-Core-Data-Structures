@@ -80,7 +80,7 @@ class ArrayStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: Theta(1), O(n)"""
+        Running time: O(1) - Appending to end of list is constant time on average."""
         self.list.append(item)  # Push to end of list for best runtime
 
     def peek(self):
@@ -93,7 +93,7 @@ class ArrayStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Popping from end of an array is O(1) amortized."""
         if self.length() > 0:
             return self.list.pop()
 
@@ -102,5 +102,5 @@ class ArrayStack(object):
 
 # Implement LinkedStack and ArrayStack above, then change the assignment below
 # to use each of your Stack implementations to verify they each pass all tests
-# Stack = LinkedStack
-Stack = ArrayStack
+Stack = LinkedStack
+# Stack = ArrayStack
