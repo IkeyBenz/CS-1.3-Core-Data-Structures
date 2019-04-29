@@ -28,7 +28,10 @@ class HashTable(object):
         """Return the load factor, the ratio of number of entries to buckets.
         Running Time: O(1), because we have a reference to self.size"""
 
-        return len(self.buckets) / self.size
+        if self.size == 0:  # Prevent divide by zero
+            return 0
+
+        return self.size / len(self.buckets)
 
     def keys(self):
         """Return a list of all keys in this hash table.
@@ -95,31 +98,26 @@ class HashTable(object):
 
     def set(self, key, value):  # Can we rename this to like 'assign' or something???
         """Insert or update the given key with its associated value.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
-        # Find the bucket the given key belongs in
+        Best case running time: O(1) - Load factor is kept less than 0.75
+        Worst case running time: O(1) - Load factor exceeds 0.75 and needs to resize """
+
         index = self._bucket_index(key)
         bucket = self.buckets[index]
-        # Find the entry with the given key in that bucket, if one exists
-        # Check if an entry with the given key exists in that bucket
-        entry = bucket.find(lambda key_value: key_value[0] == key)
-        if entry is not None:  # Found
-            # In this case, the given key's value is being updated
-            # Remove the old key-value entry from the bucket first
-            bucket.delete(entry)
-        # Insert the new key-value entry into the bucket in either case
-        bucket.append((key, value))
 
+        entry = bucket.find(lambda key_value: key_value[0] == key)
+        if entry is not None:
+            bucket.delete(entry)
+            self.size -= 1
+
+        bucket.append((key, value))
+        self.size += 1
         if self.load_factor() > self.max_load_factor:
-            # Let's double the size
-            new_half = [LinkedList() for _ in range(len(self.buckets))]
-            self.buckets.extend(new_half)
-        # TODO: Should we now redistribute current buckets' items?
+            self._resize()
 
     def delete(self, key):
         """Delete the given key and its associated value, or raise KeyError.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: O(1) When load factor is less than 0.75ish
+        Worst case running time: O(n) in the scenario that you want to resize the hashtable (not implemented)"""
         # Find the bucket the given key belongs in
         index = self._bucket_index(key)
         bucket = self.buckets[index]
@@ -128,6 +126,7 @@ class HashTable(object):
         if entry is not None:  # Found
             # Remove the key-value entry from the bucket
             bucket.delete(entry)
+            self.size -= 1
         else:  # Not found
             raise KeyError('Key not found: {}'.format(key))
 
@@ -135,21 +134,22 @@ class HashTable(object):
         """Resize this hash table's buckets and rehash all key-value entries.
         Should be called automatically when load factor exceeds a threshold
         such as 0.75 after an insertion (when set is called with a new key).
-        Best and worst case running time: ??? under what conditions? [TODO]
-        Best and worst case space usage: ??? what uses this memory? [TODO]"""
+        Best and worst case running time: ??? O(n) - Need to rehash/reset each element in the new hashtable
+        Best and worst case space usage: ??? O(n) - Store temporary list of each key/value pair in current hashtable"""
         # If unspecified, choose new size dynamically based on current size
         if new_size is None:
             new_size = len(self.buckets) * 2  # Double size
         # Option to reduce size if buckets are sparsely filled (low load factor)
         elif new_size is 0:
             new_size = len(self.buckets) / 2  # Half size
-        # TODO: Get a list to temporarily hold all current key-value entries
-        # ...
-        # TODO: Create a new list of new_size total empty linked list buckets
-        # ...
-        # TODO: Insert each key-value entry into the new list of buckets,
-        # which will rehash them into a new bucket index based on the new size
-        # ...
+
+        curr_elements = self.items()
+        self.__init__(new_size)  # Thanks Mr. Cahill
+
+        for key, value in curr_elements:
+            self.set(key, value)
+
+        return self
 
 
 def test_hash_table():

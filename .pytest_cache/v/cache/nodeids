@@ -1,6 +1,13 @@
 [
-  "Lessons/source/search_test.py::SearchTest::test_binary_search_with_items_in_list",
-  "Lessons/source/search_test.py::SearchTest::test_binary_search_with_items_not_in_list",
-  "Lessons/source/search_test.py::SearchTest::test_linear_search_with_items_in_list",
-  "Lessons/source/search_test.py::SearchTest::test_linear_search_with_items_not_in_list"
+  "Lessons/source/hashtable_test.py::HashTableTest::test_contains",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_delete",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_init",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_items",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_keys",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_length",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_resize",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_set_and_get",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_set_twice_and_get",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_size",
+  "Lessons/source/hashtable_test.py::HashTableTest::test_values"
 ]
