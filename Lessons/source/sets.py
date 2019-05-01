@@ -42,6 +42,18 @@ class Set(HashTable):
 
         return intersection
 
+    def __sub__(self, other):
+        """Returns the difference between two sets."""
+        difference = Set()
+        for item in self:
+            if item not in other:
+                difference.set(item)
+
+        return difference
+
+    def __add__(self, other):
+        return self | other
+
     def set(self, item: object) -> None:
         """Overrides the HashTable set() method, setting value to None."""
 

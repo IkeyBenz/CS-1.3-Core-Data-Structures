@@ -50,3 +50,18 @@ class SetsTest(unittest.TestCase):
         assert len(intersection) == 2
         assert "hello" in intersection
         assert "there" in intersection
+
+    def test_difference(self):
+        mySet = Set(["hello", "there", "ikey"])
+        otherSet = Set(["other", "my", "hello", "there"])
+
+        difference = mySet - otherSet
+        assert len(difference) == 1
+        assert "ikey" in difference
+
+        reverse_difference = otherSet - mySet
+        assert len(reverse_difference) == 2
+        assert "my" in reverse_difference
+        assert "other" in reverse_difference
+
+    # No test for add becasue its the same as union...

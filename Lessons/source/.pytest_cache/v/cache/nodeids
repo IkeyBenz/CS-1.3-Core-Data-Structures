@@ -1,6 +1,7 @@
 [
   "sets_test.py::SetsTest::test_add",
   "sets_test.py::SetsTest::test_delete",
+  "sets_test.py::SetsTest::test_difference",
   "sets_test.py::SetsTest::test_init",
   "sets_test.py::SetsTest::test_init_with_list",
   "sets_test.py::SetsTest::test_intersection",
