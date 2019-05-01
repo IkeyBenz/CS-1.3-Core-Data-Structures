@@ -19,9 +19,30 @@ class Set(HashTable):
         """Return a string representation of this set."""
         return f"Set({self})"
 
+    def __iter__(self):
+        for key, _ in self.items():
+            yield key
+
+    def __or__(self, other):
+        """Returns the Union of two sets"""
+        union = Set()
+        for item in self:
+            union.set(item)
+        for item in other:
+            union.set(item)
+
+        return union
+
+    def __and__(self, other):
+        """Returns the Intersection of two sets"""
+        intersection = Set()
+        for item in self:
+            if item in other:
+                intersection.set(item)
+
+        return intersection
+
     def set(self, item: object) -> None:
-        """Overrides the HashTable set() method to ensure no duplicate keys."""
-        if item in self:
-            raise ValueError(f"{item} is already in this set.")
+        """Overrides the HashTable set() method, setting value to None."""
 
         super().set(item, None)

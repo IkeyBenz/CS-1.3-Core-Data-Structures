@@ -22,9 +22,6 @@ class SetsTest(unittest.TestCase):
         mySet.set("yooo")
         assert len(mySet) == 1
 
-        with self.assertRaises(ValueError):
-            mySet.set("yooo")
-
     def test_delete(self):
         mySet = Set(["hello", "there"])
 
@@ -33,3 +30,23 @@ class SetsTest(unittest.TestCase):
         mySet.delete("hello")
 
         assert len(mySet) == 1
+
+    def test_union(self):
+        mySet = Set(["hello", "there", "ikey"])
+        otherSet = Set(["other", "my", "hello", "there"])
+
+        union = mySet | otherSet
+
+        assert len(union) == 5
+        for word in ["hello", "there", "ikey", "other", "my"]:
+            assert word in union
+
+    def test_intersection(self):
+        mySet = Set(["hello", "there", "ikey"])
+        otherSet = Set(["other", "my", "hello", "there"])
+
+        intersection = mySet & otherSet
+
+        assert len(intersection) == 2
+        assert "hello" in intersection
+        assert "there" in intersection
