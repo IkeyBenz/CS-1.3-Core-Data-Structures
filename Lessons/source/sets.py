@@ -5,9 +5,7 @@ class Set(HashTable):
     def __init__(self, iterable=None):
         """Initializes new set object"""
 
-        size = 8 if iterable is None else 2*len(iterable)
-
-        super().__init__(init_size=size, max_load_factor=0.75)
+        super().__init__()
 
         if iterable is not None:
             for elem in iterable:
