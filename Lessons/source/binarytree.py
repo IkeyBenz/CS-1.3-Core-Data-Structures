@@ -28,16 +28,15 @@ class BinaryTreeNode(object):
         downward path from this node to a descendant leaf node).
         TODO: Best and worst case running time: ??? under what conditions?"""
 
-        def _height(node):
-            left, right = 0, 0
-            if node.left is not None:
-                left = 1 + _height(node.left)
-            if node.right is not None:
-                right = 1 + _height(node.right)
+        left, right = 0, 0
 
-            return max(left, right)
+        if self.left is not None:
+            left = 1 + self.left.height()
 
-        return _height(self)
+        if self.right is not None:
+            right = 1 + self.right.height()
+
+        return max(left, right)
 
 
 class BinarySearchTree(object):
