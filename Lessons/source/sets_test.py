@@ -16,6 +16,13 @@ class SetsTest(unittest.TestCase):
         assert len(mySet) == 6
         assert mySet.size == 6
 
+    def test_init_with_list_duplicates(self):
+        mySet = Set(
+            "hello there my name is ikey hello there my name is ikey".split())
+
+        assert len(mySet) == 6
+        assert mySet.size == 6
+
     def test_add(self):
         mySet = Set()
 

@@ -2,6 +2,8 @@ from stack import Stack
 
 
 def split_by(string: str, symbols: list, include_symbols=True) -> list:
+    """Splits string by any symbol in symbols. Returns list of substrings,
+    including symbols. To not include symbols, pass include_symbols=False"""
     out = []
     curr = ""
     for c in string:
@@ -45,3 +47,9 @@ def calculate(num1: float, operation: str, num2: float) -> float:
 
 print(simplify("4-5+6*32/2+3*2-45"))
 print(4-5+6*32/2+3*2-45)
+
+
+def animate_algo():
+    outs = [
+        ''
+    ]
