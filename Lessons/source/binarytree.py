@@ -302,17 +302,18 @@ class BinarySearchTree(object):
         TODO: Running time: ??? Why and under what conditions?
         TODO: Memory usage: ??? Why and under what conditions?"""
         # TODO: Create queue to store nodes not yet traversed in level-order
+
         queue = Queue()
-        # TODO: Enqueue given starting node
         queue.enqueue(start_node)
-        # TODO: Loop until queue is empty
+
         while len(queue) > 0:
             node = queue.dequeue()
 
             visit(node.data)
-
-            queue.enqueue(node.left)
-            queue.enqueue(node.right)
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
 
 
 def test_binary_search_tree():
