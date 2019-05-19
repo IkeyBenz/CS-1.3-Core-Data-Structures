@@ -1,5 +1,6 @@
 #!python
 from queue import Queue
+from stack import Stack
 
 
 class BinaryTreeNode(object):
@@ -213,7 +214,7 @@ class BinarySearchTree(object):
         items = []
         if not self.is_empty():
             # Traverse tree in-order from root, appending each node's item
-            self._traverse_in_order_recursive(self.root, items.append)
+            self._traverse_in_order_iterative(self.root, items.append)
         # Return in-order list of all items in tree
         return items
 
@@ -234,14 +235,26 @@ class BinarySearchTree(object):
         """Traverse this binary tree with iterative in-order traversal (DFS).
         Start at the given node and visit each node with the given function.
         Runtime: O(n), assuming visit() is O(1)"""
-        # Traverse in-order without using recursion (stretch challenge)
+        
+        stack = Stack()
+        curr_node = node
+
+        while len(stack) > 0 or curr_node:
+            if curr_node:
+                stack.push(curr_node)
+                curr_node = curr_node.left
+            else:
+                curr_node = stack.pop()
+                visit(curr_node.data)
+                curr_node = curr_node.right
 
     def items_pre_order(self):
         """Return a pre-order list of all items in this binary search tree."""
         items = []
         if not self.is_empty():
-            # Traverse tree pre-order from root, appending each node's item
-            self._traverse_pre_order_recursive(self.root, items.append)
+                # Traverse tree pre-order from root, appending each node's item
+            # self._traverse_pre_order_recursive(self.root, items.append)
+            self._traverse_pre_order_iterative(self.root, items.append)
         # Return pre-order list of all items in tree
         return items
 
@@ -259,14 +272,29 @@ class BinarySearchTree(object):
         """Traverse this binary tree with iterative pre-order traversal (DFS).
         Start at the given node and visit each node with the given function.
         """
-        # Traverse pre-order without using recursion (stretch challenge)
+        #				4					stack = [6,]
+        #		2				6			out = [4, 2, ]
+        #	1		3		5		7
+
+        stack = Stack()
+        stack.push(node)
+
+        while len(stack) > 0:
+            node = stack.pop()
+            visit(node.data)
+
+            if node.right:  # Delay right visit's until after all lefts
+                stack.push(node.right)
+
+            if node.left:
+                stack.push(node.left)
 
     def items_post_order(self):
         """Return a post-order list of all items in this binary search tree."""
         items = []
         if not self.is_empty():
             # Traverse tree post-order from root, appending each node's item
-            self._traverse_post_order_recursive(self.root, items.append)
+            self._traverse_post_order_iterative(self.root, items.append)
         # Return post-order list of all items in tree
         return items
 
@@ -283,9 +311,38 @@ class BinarySearchTree(object):
     def _traverse_post_order_iterative(self, node, visit):
         """Traverse this binary tree with iterative post-order traversal (DFS).
         Start at the given node and visit each node with the given function.
-        TODO: Running time: ??? Why and under what conditions?
-        TODO: Memory usage: ??? Why and under what conditions?"""
-        # Traverse post-order without using recursion (stretch challenge)
+        Running time: O(n) Iterates over each node
+        Memory usage: O(n) We are creating a stack"""
+
+        #				4					stack = [6, 4, 3, 2]
+        #		2				6			out = []
+        #	1		3		5		7		post_order = [ 1, 3, 2, 5, 7, 6, 4 ]
+
+        stack = Stack()
+        curr_node = node
+
+        while len(stack) > 0 or curr_node:
+   
+            while curr_node:
+                if curr_node.right:
+                    stack.push(curr_node.right)
+                
+                stack.push(curr_node)
+                curr_node = curr_node.left
+            
+            curr_node = stack.pop()
+
+            if curr_node.right and stack.peek() == curr_node.right:
+                stack.pop()
+                stack.push(curr_node)
+                curr_node = curr_node.right  
+                
+            else:
+                visit(curr_node.data)
+                curr_node = None
+            
+
+
 
     def items_level_order(self):
         """Return a level-order list of all items in this binary search tree."""
